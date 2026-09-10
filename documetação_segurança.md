@@ -1,6 +1,6 @@
-6 Segurança de Dados
+#6 Segurança de Dados(H1)
 
-6.1 Definição dos níveis de acesso (RBAC - Role-Based Access Control) e regras de validação de entrada de dados
+#6.1 Definição dos níveis de acesso (RBAC - Role-Based Access Control) e regras de validação de entrada de dados(H2)
 
   Foi utilizado o modleo RBAC (Role-Based Access Control) para ajudar no controle de acesso de cada usúario com cada funcionalidade. Definimos 3 "níveis": Administrados, Cliente e Cozinheiro. Cada um deles vai ter suas ações possíveis e ações bloqueadas onde: O Administrador possui permissões para gerenciar o cardápio e outras funções administrativas; o Cliente pode visualizar os pratos e realizar pedidos; e o Cozinheiro possui acesso às funções relacionadas ao acompanhamento e atualização dos pedidos na cozinha. Assim separamos somente as ações necessárias para cada usúario, assim usúarios não autorizados não vão poder alterar itens que possam comprometer o sistema.
 
