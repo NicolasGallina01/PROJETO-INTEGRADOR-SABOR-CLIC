@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="light dark" name="color-scheme"/>
+<meta content="Sabor &amp; Clic — gestão de cozinhas, pedidos e cardápio digital" name="description"/>
+<title>
+   Meus pedidos · Sabor &amp; Clic
+  </title>
+<link href="style.css" rel="stylesheet"/>
+<script defer="" src="theme.js">
+</script>
+<script src="app.js" type="module">
+</script>
+</head>
+<body data-page="rastreamento" data-role="cliente">
+<a class="skip-link" href="#main">
+   Ir para conteúdo
+  </a>
+<div class="app-layout">
+<aside aria-label="Menu principal" class="sidebar">
+<a class="brand" href="index.html">
+
+<span>
+      Sabor
+      <em>
+       &amp;
+      </em>
+      Clic
+      <small>
+       ESPAÇOS &amp; SABORES
+      </small>
+</span>
+</a>
+<div class="sidebar-section">
+     NAVEGAÇÃO
+    </div>
+<nav aria-label="Navegação cliente" class="sidebar-nav">
+<a class="nav-link" href="index.html">
+<span aria-hidden="true" class="nav-symbol">
+       ◈
+      </span>
+<span>
+       Cardápio
+      </span>
+</a>
+<a class="nav-link" href="carrinho.html">
+<span aria-hidden="true" class="nav-symbol">
+       ▣
+      </span>
+<span>
+       Carrinho
+      </span>
+<span class="nav-count" id="cart-count">
+       0
+      </span>
+</a>
+<a aria-current="page" class="nav-link active" href="rastreamento.html">
+<span aria-hidden="true" class="nav-symbol">
+       ◷
+      </span>
+<span>
+       Meus pedidos
+      </span>
+</a>
+<a class="nav-link" href="agendamentos.html">
+<span aria-hidden="true" class="nav-symbol">
+       ▦
+      </span>
+<span>
+       Reservar bancada
+      </span>
+</a>
+</nav>
+<div class="sidebar-bottom">
+<div class="user-identity">
+<span class="avatar" id="user-avatar">
+       SC
+      </span>
+<span>
+<strong id="user-name">
+        Carregando...
+       </strong>
+<small id="user-role">
+        Cliente
+       </small>
+</span>
+</div>
+<button aria-pressed="false" class="contrast-toggle" data-action="contrast" type="button">
+<span aria-hidden="true">
+       ◐
+      </span>
+      Alto contraste
+      <span class="toggle-state" id="contrast-state">
+       Desativado
+      </span>
+</button>
+<button class="logout-btn" data-action="logout" type="button">
+      ↪ Encerrar sessão
+     </button>
+</div>
+</aside>
+<div class="workspace">
+<header class="topbar">
+<span class="breadcrumb">
+      Sabor &amp; Clic
+      <span aria-hidden="true">
+       /
+      </span>
+<strong>
+       Meus pedidos
+      </strong>
+</span>
+<div class="topbar-right">
+<span class="topbar-date">
+       GESTÃO INTEGRADA
+      </span>
+<span class="status-dot" title="Dados locais de demonstração">
+</span>
+</div>
+</header>
+<main class="main-content" id="main">
+<div class="page-head">
+<div>
+<p class="eyebrow">
+        ÁREA DO CLIENTE
+       </p>
+<h1>
+        Meus pedidos
+       </h1>
+<p class="page-subtitle">
+        Acompanhe o andamento da produção e as atualizações da cozinha.
+       </p>
+</div>
+</div>
+<div id="page-content">
+<section class="surface">
+<div class="surface-heading">
+<div>
+<p class="eyebrow">
+          ACOMPANHAMENTO
+         </p>
+<h2>
+          Histórico e status
+         </h2>
+</div>
+<button class="btn btn-soft" data-action="refresh-orders" type="button">
+         ↻ Atualizar
+        </button>
+</div>
+<div id="tracking-orders">
+<div class="empty-state" role="status">
+         Carregando informações...
+        </div>
+</div>
+</section>
+</div>
+</main>
+<footer class="site-footer">
+     Sabor &amp; Clic
+     <span>
+      •
+     </span>
+     Projeto Integrador · IFSP
+     <span>
+      •
+     </span>
+     Ambiente acadêmico
+    </footer>
+</div>
+</div>
+<div aria-live="polite" class="toast" hidden="" id="toast" role="status">
+</div>
+</body>
+</html>

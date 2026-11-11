@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="light dark" name="color-scheme"/>
+<meta content="Sabor &amp; Clic — gestão de cozinhas, pedidos e cardápio digital" name="description"/>
+<title>
+   Cozinhas e bancadas · Sabor &amp; Clic
+  </title>
+<link href="style.css" rel="stylesheet"/>
+<script defer="" src="theme.js">
+</script>
+<script src="app.js" type="module">
+</script>
+</head>
+<body data-page="admin-cozinhas" data-role="administrador">
+<a class="skip-link" href="#main">
+   Ir para conteúdo
+  </a>
+<div class="app-layout">
+<aside aria-label="Menu principal" class="sidebar">
+<a class="brand" href="admin-cardapio.html">
+
+<span>
+      Sabor
+      <em>
+       &amp;
+      </em>
+      Clic
+      <small>
+       ESPAÇOS &amp; SABORES
+      </small>
+</span>
+</a>
+<div class="sidebar-section">
+     NAVEGAÇÃO
+    </div>
+<nav aria-label="Navegação administrador" class="sidebar-nav">
+<a class="nav-link" href="admin-cardapio.html">
+<span aria-hidden="true" class="nav-symbol">
+       ◈
+      </span>
+<span>
+       Cardápio
+      </span>
+</a>
+<a class="nav-link" href="admin-pedidos.html">
+<span aria-hidden="true" class="nav-symbol">
+       ☷
+      </span>
+<span>
+       Pedidos
+      </span>
+</a>
+<a class="nav-link" href="admin-estoque.html">
+<span aria-hidden="true" class="nav-symbol">
+       ▤
+      </span>
+<span>
+       Estoque
+      </span>
+</a>
+<a aria-current="page" class="nav-link active" href="admin-cozinhas.html">
+<span aria-hidden="true" class="nav-symbol">
+       ▦
+      </span>
+<span>
+       Cozinhas e bancadas
+      </span>
+</a>
+<a class="nav-link" href="admin-usuarios.html">
+<span aria-hidden="true" class="nav-symbol">
+       ♙
+      </span>
+<span>
+       Usuários
+      </span>
+</a>
+<a class="nav-link" href="admin-relatorios.html">
+<span aria-hidden="true" class="nav-symbol">
+       ▥
+      </span>
+<span>
+       Relatórios
+      </span>
+</a>
+</nav>
+<div class="sidebar-bottom">
+<div class="user-identity">
+<span class="avatar" id="user-avatar">
+       SC
+      </span>
+<span>
+<strong id="user-name">
+        Carregando...
+       </strong>
+<small id="user-role">
+        Administrador
+       </small>
+</span>
+</div>
+<button aria-pressed="false" class="contrast-toggle" data-action="contrast" type="button">
+<span aria-hidden="true">
+       ◐
+      </span>
+      Alto contraste
+      <span class="toggle-state" id="contrast-state">
+       Desativado
+      </span>
+</button>
+<button class="logout-btn" data-action="logout" type="button">
+      ↪ Encerrar sessão
+     </button>
+</div>
+</aside>
+<div class="workspace">
+<header class="topbar">
+<span class="breadcrumb">
+      Sabor &amp; Clic
+      <span aria-hidden="true">
+       /
+      </span>
+<strong>
+       Cozinhas e bancadas
+      </strong>
+</span>
+<div class="topbar-right">
+<span class="topbar-date">
+       GESTÃO INTEGRADA
+      </span>
+<span class="status-dot" title="Dados locais de demonstração">
+</span>
+</div>
+</header>
+<main class="main-content" id="main">
+<div class="page-head">
+<div>
+<p class="eyebrow">
+        PAINEL ADMINISTRATIVO
+       </p>
+<h1>
+        Cozinhas e bancadas
+       </h1>
+<p class="page-subtitle">
+        Organize as instalações e acompanhe reservas dos espaços.
+       </p>
+</div>
+</div>
+<div id="page-content">
+<div class="grid-2 grid-2-admin">
+<section class="surface">
+<p class="eyebrow">
+         INFRAESTRUTURA
+        </p>
+<h2>
+         Cadastrar bancada
+        </h2>
+<form class="form-stack" id="bench-form">
+<label>
+          Nome
+          <input id="bench-name" placeholder="Ex.: Bancada 05" required=""/>
+</label>
+<label>
+          Tipo / equipamentos
+          <input id="bench-type" placeholder="Ex.: Fornos e pizzas" required=""/>
+</label>
+<label>
+          Capacidade (pessoas)
+          <input id="bench-capacity" max="30" min="1" required="" type="number" value="2"/>
+</label>
+<button class="btn btn-primary" type="submit">
+          Adicionar bancada
+         </button>
+</form>
+</section>
+<section class="surface">
+<p class="eyebrow">
+         AGENDAMENTOS
+        </p>
+<h2>
+         Reservas registradas
+        </h2>
+<div id="admin-bookings">
+<div class="empty-state" role="status">
+          Carregando informações...
+         </div>
+</div>
+</section>
+</div>
+<section class="surface section">
+<div class="surface-heading">
+<div>
+<p class="eyebrow">
+          ESPAÇOS
+         </p>
+<h2>
+          Bancadas cadastradas
+         </h2>
+</div>
+<span class="count-pill" id="benches-total">
+         0 bancadas
+        </span>
+</div>
+<div class="bench-grid" id="admin-benches">
+<div class="empty-state" role="status">
+         Carregando informações...
+        </div>
+</div>
+</section>
+</div>
+</main>
+<footer class="site-footer">
+     Sabor &amp; Clic
+     <span>
+      •
+     </span>
+     Projeto Integrador · IFSP
+     <span>
+      •
+     </span>
+     Ambiente acadêmico
+    </footer>
+</div>
+</div>
+<div aria-live="polite" class="toast" hidden="" id="toast" role="status">
+</div>
+</body>
+</html>

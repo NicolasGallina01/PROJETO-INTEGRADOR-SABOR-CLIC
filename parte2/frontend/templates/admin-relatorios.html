@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="light dark" name="color-scheme"/>
+<meta content="Sabor &amp; Clic — gestão de cozinhas, pedidos e cardápio digital" name="description"/>
+<title>
+   Relatórios e desempenho · Sabor &amp; Clic
+  </title>
+<link href="style.css" rel="stylesheet"/>
+<script defer="" src="theme.js">
+</script>
+<script src="app.js" type="module">
+</script>
+</head>
+<body data-page="admin-relatorios" data-role="administrador">
+<a class="skip-link" href="#main">
+   Ir para conteúdo
+  </a>
+<div class="app-layout">
+<aside aria-label="Menu principal" class="sidebar">
+<a class="brand" href="admin-cardapio.html">
+
+<span>
+      Sabor
+      <em>
+       &amp;
+      </em>
+      Clic
+      <small>
+       ESPAÇOS &amp; SABORES
+      </small>
+</span>
+</a>
+<div class="sidebar-section">
+     NAVEGAÇÃO
+    </div>
+<nav aria-label="Navegação administrador" class="sidebar-nav">
+<a class="nav-link" href="admin-cardapio.html">
+<span aria-hidden="true" class="nav-symbol">
+       ◈
+      </span>
+<span>
+       Cardápio
+      </span>
+</a>
+<a class="nav-link" href="admin-pedidos.html">
+<span aria-hidden="true" class="nav-symbol">
+       ☷
+      </span>
+<span>
+       Pedidos
+      </span>
+</a>
+<a class="nav-link" href="admin-estoque.html">
+<span aria-hidden="true" class="nav-symbol">
+       ▤
+      </span>
+<span>
+       Estoque
+      </span>
+</a>
+<a class="nav-link" href="admin-cozinhas.html">
+<span aria-hidden="true" class="nav-symbol">
+       ▦
+      </span>
+<span>
+       Cozinhas e bancadas
+      </span>
+</a>
+<a class="nav-link" href="admin-usuarios.html">
+<span aria-hidden="true" class="nav-symbol">
+       ♙
+      </span>
+<span>
+       Usuários
+      </span>
+</a>
+<a aria-current="page" class="nav-link active" href="admin-relatorios.html">
+<span aria-hidden="true" class="nav-symbol">
+       ▥
+      </span>
+<span>
+       Relatórios
+      </span>
+</a>
+</nav>
+<div class="sidebar-bottom">
+<div class="user-identity">
+<span class="avatar" id="user-avatar">
+       SC
+      </span>
+<span>
+<strong id="user-name">
+        Carregando...
+       </strong>
+<small id="user-role">
+        Administrador
+       </small>
+</span>
+</div>
+<button aria-pressed="false" class="contrast-toggle" data-action="contrast" type="button">
+<span aria-hidden="true">
+       ◐
+      </span>
+      Alto contraste
+      <span class="toggle-state" id="contrast-state">
+       Desativado
+      </span>
+</button>
+<button class="logout-btn" data-action="logout" type="button">
+      ↪ Encerrar sessão
+     </button>
+</div>
+</aside>
+<div class="workspace">
+<header class="topbar">
+<span class="breadcrumb">
+      Sabor &amp; Clic
+      <span aria-hidden="true">
+       /
+      </span>
+<strong>
+       Relatórios e desempenho
+      </strong>
+</span>
+<div class="topbar-right">
+<span class="topbar-date">
+       GESTÃO INTEGRADA
+      </span>
+<span class="status-dot" title="Dados locais de demonstração">
+</span>
+</div>
+</header>
+<main class="main-content" id="main">
+<div class="page-head">
+<div>
+<p class="eyebrow">
+        PAINEL ADMINISTRATIVO
+       </p>
+<h1>
+        Relatórios e desempenho
+       </h1>
+<p class="page-subtitle">
+        Dados de vendas, operação e ocupação com base nos registros do sistema.
+       </p>
+</div>
+</div>
+<div id="page-content">
+<div class="metrics-grid" id="report-metrics">
+</div>
+<div class="grid-2 section">
+<section class="surface">
+<p class="eyebrow">
+         POPULARIDADE
+        </p>
+<h2>
+         Pratos mais vendidos
+        </h2>
+<div id="report-top-products">
+<div class="empty-state" role="status">
+          Carregando informações...
+         </div>
+</div>
+</section>
+<section class="surface">
+<p class="eyebrow">
+         PRODUÇÃO
+        </p>
+<h2>
+         Pedidos por situação
+        </h2>
+<div id="report-status">
+<div class="empty-state" role="status">
+          Carregando informações...
+         </div>
+</div>
+</section>
+</div>
+<section class="surface section">
+<div class="surface-heading">
+<div>
+<p class="eyebrow">
+          REPOSIÇÃO
+         </p>
+<h2>
+          Ingredientes abaixo do mínimo
+         </h2>
+</div>
+<a class="btn btn-soft" href="admin-estoque.html">
+         Abrir estoque →
+        </a>
+</div>
+<div id="report-low-stock">
+<div class="empty-state" role="status">
+         Carregando informações...
+        </div>
+</div>
+</section>
+</div>
+</main>
+<footer class="site-footer">
+     Sabor &amp; Clic
+     <span>
+      •
+     </span>
+     Projeto Integrador · IFSP
+     <span>
+      •
+     </span>
+     Ambiente acadêmico
+    </footer>
+</div>
+</div>
+<div aria-live="polite" class="toast" hidden="" id="toast" role="status">
+</div>
+</body>
+</html>

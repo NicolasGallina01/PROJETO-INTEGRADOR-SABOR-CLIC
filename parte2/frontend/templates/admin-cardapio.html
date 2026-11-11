@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="light dark" name="color-scheme"/>
+<meta content="Sabor &amp; Clic — gestão de cozinhas, pedidos e cardápio digital" name="description"/>
+<title>
+   Gestão de cardápio · Sabor &amp; Clic
+  </title>
+<link href="style.css" rel="stylesheet"/>
+<script defer="" src="theme.js">
+</script>
+<script src="app.js" type="module">
+</script>
+</head>
+<body data-page="admin-cardapio" data-role="administrador">
+<a class="skip-link" href="#main">
+   Ir para conteúdo
+  </a>
+<div class="app-layout">
+<aside aria-label="Menu principal" class="sidebar">
+<a class="brand" href="admin-cardapio.html">
+
+<span>
+      Sabor
+      <em>
+       &amp;
+      </em>
+      Clic
+      <small>
+       ESPAÇOS &amp; SABORES
+      </small>
+</span>
+</a>
+<div class="sidebar-section">
+     NAVEGAÇÃO
+    </div>
+<nav aria-label="Navegação administrador" class="sidebar-nav">
+<a aria-current="page" class="nav-link active" href="admin-cardapio.html">
+<span aria-hidden="true" class="nav-symbol">
+       ◈
+      </span>
+<span>
+       Cardápio
+      </span>
+</a>
+<a class="nav-link" href="admin-pedidos.html">
+<span aria-hidden="true" class="nav-symbol">
+       ☷
+      </span>
+<span>
+       Pedidos
+      </span>
+</a>
+<a class="nav-link" href="admin-estoque.html">
+<span aria-hidden="true" class="nav-symbol">
+       ▤
+      </span>
+<span>
+       Estoque
+      </span>
+</a>
+<a class="nav-link" href="admin-cozinhas.html">
+<span aria-hidden="true" class="nav-symbol">
+       ▦
+      </span>
+<span>
+       Cozinhas e bancadas
+      </span>
+</a>
+<a class="nav-link" href="admin-usuarios.html">
+<span aria-hidden="true" class="nav-symbol">
+       ♙
+      </span>
+<span>
+       Usuários
+      </span>
+</a>
+<a class="nav-link" href="admin-relatorios.html">
+<span aria-hidden="true" class="nav-symbol">
+       ▥
+      </span>
+<span>
+       Relatórios
+      </span>
+</a>
+</nav>
+<div class="sidebar-bottom">
+<div class="user-identity">
+<span class="avatar" id="user-avatar">
+       SC
+      </span>
+<span>
+<strong id="user-name">
+        Carregando...
+       </strong>
+<small id="user-role">
+        Administrador
+       </small>
+</span>
+</div>
+<button aria-pressed="false" class="contrast-toggle" data-action="contrast" type="button">
+<span aria-hidden="true">
+       ◐
+      </span>
+      Alto contraste
+      <span class="toggle-state" id="contrast-state">
+       Desativado
+      </span>
+</button>
+<button class="logout-btn" data-action="logout" type="button">
+      ↪ Encerrar sessão
+     </button>
+</div>
+</aside>
+<div class="workspace">
+<header class="topbar">
+<span class="breadcrumb">
+      Sabor &amp; Clic
+      <span aria-hidden="true">
+       /
+      </span>
+<strong>
+       Gestão de cardápio
+      </strong>
+</span>
+<div class="topbar-right">
+<span class="topbar-date">
+       GESTÃO INTEGRADA
+      </span>
+<span class="status-dot" title="Dados locais de demonstração">
+</span>
+</div>
+</header>
+<main class="main-content" id="main">
+<div class="page-head">
+<div>
+<p class="eyebrow">
+        PAINEL ADMINISTRATIVO
+       </p>
+<h1>
+        Gestão de cardápio
+       </h1>
+<p class="page-subtitle">
+        Organize produtos, preços, imagens e fichas técnicas dos pratos.
+       </p>
+</div>
+</div>
+<div id="page-content">
+<div class="grid-2 grid-2-admin">
+<section class="surface">
+<p class="eyebrow">
+         GESTÃO DE PRODUTOS
+        </p>
+<h2 id="dish-form-title">
+         Cadastrar novo prato
+        </h2>
+<form class="form-stack" id="dish-form">
+<input id="dish-id" type="hidden"/>
+<label>
+          Nome do prato
+          <input id="dish-name" maxlength="100" minlength="3" placeholder="Ex.: Lasanha artesanal" required=""/>
+</label>
+<div class="form-grid">
+<label>
+           Categoria
+           <input id="dish-category" maxlength="55" minlength="3" placeholder="Ex.: Massas" required=""/>
+</label>
+<label>
+           Preço (R$)
+           <input id="dish-price" max="100000" min="0.01" placeholder="29,90" required="" step="0.01" type="number"/>
+</label>
+</div>
+<label>
+          Descrição
+          <textarea id="dish-desc" maxlength="500" minlength="8" placeholder="Ingredientes e características do prato" required="" rows="3"></textarea>
+</label>
+<div class="form-grid">
+<label>
+           Tempo de preparo (min)
+           <input id="dish-time" max="240" min="1" required="" type="number" value="20"/>
+</label>
+<label>
+           Imagem (URL HTTPS)
+           <input id="dish-img" placeholder="https://..." type="url"/>
+</label>
+</div>
+<label class="check-row">
+<input id="dish-active" type="checkbox"/>
+          Disponível para pedidos
+         </label>
+<p class="form-hint">
+          Para ativar o prato, cadastre sua ficha técnica primeiro. Evita pedidos sem controle de estoque.
+         </p>
+<div class="button-row">
+<button class="btn btn-primary" id="dish-submit" type="submit">
+           Salvar prato
+          </button>
+<button class="btn btn-soft" data-action="clear-dish" type="button">
+           Limpar
+          </button>
+</div>
+</form>
+</section>
+<section class="surface">
+<p class="eyebrow">
+         FICHA TÉCNICA
+        </p>
+<h2>
+         Ingredientes por prato
+        </h2>
+<p class="muted">
+         Selecione “Ficha” em um prato para configurar o consumo automático do estoque.
+        </p>
+<div class="recipe-editor" id="recipe-editor">
+<div class="empty-state">
+          Selecione um prato na lista abaixo.
+         </div>
+</div>
+</section>
+</div>
+<section class="surface section">
+<div class="surface-heading">
+<div>
+<p class="eyebrow">
+          CATÁLOGO
+         </p>
+<h2>
+          Pratos cadastrados
+         </h2>
+</div>
+<span class="count-pill" id="dishes-total">
+         0 itens
+        </span>
+</div>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>
+            Prato
+           </th>
+<th>
+            Categoria
+           </th>
+<th>
+            Preço
+           </th>
+<th>
+            Situação
+           </th>
+<th>
+            Ações
+           </th>
+</tr>
+</thead>
+<tbody id="admin-dishes">
+<div class="empty-state" role="status">
+           Carregando informações...
+          </div>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+<footer class="site-footer">
+     Sabor &amp; Clic
+     <span>
+      •
+     </span>
+     Projeto Integrador · IFSP
+     <span>
+      •
+     </span>
+     Ambiente acadêmico
+    </footer>
+</div>
+</div>
+<div aria-live="polite" class="toast" hidden="" id="toast" role="status">
+</div>
+</body>
+</html>

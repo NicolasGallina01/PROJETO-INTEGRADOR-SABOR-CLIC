@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="light dark" name="color-scheme"/>
+<meta content="Sabor &amp; Clic — gestão de cozinhas, pedidos e cardápio digital" name="description"/>
+<title>
+   Fila de produção · Sabor &amp; Clic
+  </title>
+<link href="style.css" rel="stylesheet"/>
+<script defer="" src="theme.js">
+</script>
+<script src="app.js" type="module">
+</script>
+</head>
+<body data-page="cozinheiro" data-role="cozinheiro">
+<a class="skip-link" href="#main">
+   Ir para conteúdo
+  </a>
+<div class="app-layout">
+<aside aria-label="Menu principal" class="sidebar">
+<a class="brand" href="cozinheiro.html">
+
+<span>
+      Sabor
+      <em>
+       &amp;
+      </em>
+      Clic
+      <small>
+       ESPAÇOS &amp; SABORES
+      </small>
+</span>
+</a>
+<div class="sidebar-section">
+     NAVEGAÇÃO
+    </div>
+<nav aria-label="Navegação cozinheiro" class="sidebar-nav">
+<a aria-current="page" class="nav-link active" href="cozinheiro.html">
+<span aria-hidden="true" class="nav-symbol">
+       ☷
+      </span>
+<span>
+       Fila de produção
+      </span>
+</a>
+</nav>
+<div class="sidebar-bottom">
+<div class="user-identity">
+<span class="avatar" id="user-avatar">
+       SC
+      </span>
+<span>
+<strong id="user-name">
+        Carregando...
+       </strong>
+<small id="user-role">
+        Cozinheiro
+       </small>
+</span>
+</div>
+<button aria-pressed="false" class="contrast-toggle" data-action="contrast" type="button">
+<span aria-hidden="true">
+       ◐
+      </span>
+      Alto contraste
+      <span class="toggle-state" id="contrast-state">
+       Desativado
+      </span>
+</button>
+<button class="logout-btn" data-action="logout" type="button">
+      ↪ Encerrar sessão
+     </button>
+</div>
+</aside>
+<div class="workspace">
+<header class="topbar">
+<span class="breadcrumb">
+      Sabor &amp; Clic
+      <span aria-hidden="true">
+       /
+      </span>
+<strong>
+       Fila de produção
+      </strong>
+</span>
+<div class="topbar-right">
+<span class="topbar-date">
+       GESTÃO INTEGRADA
+      </span>
+<span class="status-dot" title="Dados locais de demonstração">
+</span>
+</div>
+</header>
+<main class="main-content" id="main">
+<div class="page-head">
+<div>
+<p class="eyebrow">
+        PAINEL DA COZINHA
+       </p>
+<h1>
+        Fila de produção
+       </h1>
+<p class="page-subtitle">
+        Controle o preparo e o tempo estimado de cada pedido em tempo real.
+       </p>
+</div>
+</div>
+<div id="page-content">
+<div class="metrics-grid" id="kds-metrics">
+</div>
+<section class="section">
+<div class="section-header">
+<div>
+<p class="eyebrow">
+          KITCHEN DISPLAY SYSTEM
+         </p>
+<h2>
+          Pedidos na cozinha
+         </h2>
+</div>
+<button class="btn btn-soft" data-action="refresh-orders" type="button">
+         ↻ Atualizar fila
+        </button>
+</div>
+<div class="filter-tabs" id="kds-tabs">
+<button class="filter-tab active" data-filter="ativos" type="button">
+         Em andamento
+        </button>
+<button class="filter-tab" data-filter="todos" type="button">
+         Todos
+        </button>
+</div>
+<div class="kds-grid" id="kds-orders">
+<div class="empty-state" role="status">
+         Carregando informações...
+        </div>
+</div>
+<p class="form-hint">
+        A fila é atualizada automaticamente a cada 20 segundos.
+       </p>
+</section>
+</div>
+</main>
+<footer class="site-footer">
+     Sabor &amp; Clic
+     <span>
+      •
+     </span>
+     Projeto Integrador · IFSP
+     <span>
+      •
+     </span>
+     Ambiente acadêmico
+    </footer>
+</div>
+</div>
+<div aria-live="polite" class="toast" hidden="" id="toast" role="status">
+</div>
+</body>
+</html>

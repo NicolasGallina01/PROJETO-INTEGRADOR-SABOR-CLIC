@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="light dark" name="color-scheme"/>
+<title>
+   Acesse sua conta · Sabor &amp; Clic
+  </title>
+<link href="style.css" rel="stylesheet"/>
+<script defer="" src="theme.js">
+</script>
+<script src="app.js" type="module">
+</script>
+</head>
+<body class="login-page" data-page="login">
+<a class="skip-link" href="#main">
+   Ir para conteúdo
+  </a>
+<main class="auth-layout" id="main">
+<section class="auth-visual">
+<div class="auth-brand">
+
+<strong>
+      Sabor
+      <em>
+       &amp;
+      </em>
+      Clic
+     </strong>
+</div>
+<div class="auth-message">
+<span class="hero-kicker">
+      A TECNOLOGIA QUE CONECTA
+     </span>
+<h1>
+      Boa comida.
+      <br/>
+      Boa gestão.
+      <br/>
+<span>
+       Boas histórias.
+      </span>
+</h1>
+<p>
+      Seu espaço para criar, organizar e fazer cada pedido acontecer com tranquilidade.
+     </p>
+</div>
+<div class="auth-footer">
+     Projeto Integrador · IFSP São Paulo
+    </div>
+</section>
+<section class="auth-panel">
+<div class="auth-top">
+<span class="eyebrow">
+      SEJA BEM-VINDO(A)
+     </span>
+<button aria-pressed="false" class="contrast-toggle" data-action="contrast" type="button">
+<span aria-hidden="true">
+       ◐
+      </span>
+      Alto contraste
+     </button>
+</div>
+<div class="auth-box">
+<h2 id="auth-title">
+      Entre na sua conta
+     </h2>
+<p class="page-subtitle">
+      Use seu e-mail e senha para acessar o Sabor &amp; Clic.
+     </p>
+<div class="auth-tabs">
+<button aria-pressed="true" class="auth-tab active" id="show-login" type="button">
+       Entrar
+      </button>
+<button aria-pressed="false" class="auth-tab" id="show-register" type="button">
+       Criar conta
+      </button>
+</div>
+<div class="demo-help"><strong>Acesso de demonstração</strong><p>Cliente: cliente@saborclic.local<br/>Cozinheiro: cozinheiro@saborclic.local<br/>Administrador: admin@saborclic.local<br/>Senha para os três: <strong>SenhaDemo@2026</strong></p></div><form class="form-stack" id="login-form">
+<label>
+       E-mail
+       <input autocomplete="username" id="login-email" placeholder="seuemail@exemplo.com" required="" type="email"/>
+</label>
+<label>
+       Senha
+       <input autocomplete="current-password" id="login-password" placeholder="Sua senha" required="" type="password"/>
+</label>
+<button class="btn btn-primary btn-full" type="submit">
+       Entrar no sistema →
+      </button>
+</form>
+<form class="form-stack" hidden="" id="register-form">
+<label>
+       Nome completo
+       <input autocomplete="name" id="register-name" maxlength="100" minlength="3" required=""/>
+</label>
+<label>
+       E-mail
+       <input autocomplete="email" id="register-email" required="" type="email"/>
+</label>
+<label>
+       Endereço de entrega
+       <input autocomplete="street-address" id="register-address" minlength="5" required=""/>
+</label>
+<label>
+       Senha segura
+       <input autocomplete="new-password" id="register-password" minlength="8" placeholder="Maiúscula, minúscula, número e símbolo" required="" type="password"/>
+</label>
+<p class="form-hint">
+       Clientes podem se cadastrar. Os outros perfis são criados pelo administrador.
+      </p>
+<button class="btn btn-primary btn-full" type="submit">
+       Criar minha conta →
+      </button>
+</form>
+<div class="demo-credentials">
+<strong>
+       Acessos para demonstração
+      </strong>
+<p>
+       Admin: admin@saborclic.local
+      </p>
+<p>
+       Cliente: cliente@saborclic.local
+      </p>
+<p>
+       Cozinha: cozinheiro@saborclic.local
+      </p>
+<p>
+       Senha inicial (somente ambiente local):
+       <strong>
+        SenhaDemo@2026
+       </strong>
+</p>
+</div>
+</div>
+</section>
+</main>
+<div aria-live="polite" class="toast" hidden="" id="toast" role="status">
+</div>
+</body>
+</html>

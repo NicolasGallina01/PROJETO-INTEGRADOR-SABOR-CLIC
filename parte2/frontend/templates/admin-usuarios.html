@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="light dark" name="color-scheme"/>
+<meta content="Sabor &amp; Clic — gestão de cozinhas, pedidos e cardápio digital" name="description"/>
+<title>
+   Gerenciamento de usuários · Sabor &amp; Clic
+  </title>
+<link href="style.css" rel="stylesheet"/>
+<script defer="" src="theme.js">
+</script>
+<script src="app.js" type="module">
+</script>
+</head>
+<body data-page="admin-usuarios" data-role="administrador">
+<a class="skip-link" href="#main">
+   Ir para conteúdo
+  </a>
+<div class="app-layout">
+<aside aria-label="Menu principal" class="sidebar">
+<a class="brand" href="admin-cardapio.html">
+
+<span>
+      Sabor
+      <em>
+       &amp;
+      </em>
+      Clic
+      <small>
+       ESPAÇOS &amp; SABORES
+      </small>
+</span>
+</a>
+<div class="sidebar-section">
+     NAVEGAÇÃO
+    </div>
+<nav aria-label="Navegação administrador" class="sidebar-nav">
+<a class="nav-link" href="admin-cardapio.html">
+<span aria-hidden="true" class="nav-symbol">
+       ◈
+      </span>
+<span>
+       Cardápio
+      </span>
+</a>
+<a class="nav-link" href="admin-pedidos.html">
+<span aria-hidden="true" class="nav-symbol">
+       ☷
+      </span>
+<span>
+       Pedidos
+      </span>
+</a>
+<a class="nav-link" href="admin-estoque.html">
+<span aria-hidden="true" class="nav-symbol">
+       ▤
+      </span>
+<span>
+       Estoque
+      </span>
+</a>
+<a class="nav-link" href="admin-cozinhas.html">
+<span aria-hidden="true" class="nav-symbol">
+       ▦
+      </span>
+<span>
+       Cozinhas e bancadas
+      </span>
+</a>
+<a aria-current="page" class="nav-link active" href="admin-usuarios.html">
+<span aria-hidden="true" class="nav-symbol">
+       ♙
+      </span>
+<span>
+       Usuários
+      </span>
+</a>
+<a class="nav-link" href="admin-relatorios.html">
+<span aria-hidden="true" class="nav-symbol">
+       ▥
+      </span>
+<span>
+       Relatórios
+      </span>
+</a>
+</nav>
+<div class="sidebar-bottom">
+<div class="user-identity">
+<span class="avatar" id="user-avatar">
+       SC
+      </span>
+<span>
+<strong id="user-name">
+        Carregando...
+       </strong>
+<small id="user-role">
+        Administrador
+       </small>
+</span>
+</div>
+<button aria-pressed="false" class="contrast-toggle" data-action="contrast" type="button">
+<span aria-hidden="true">
+       ◐
+      </span>
+      Alto contraste
+      <span class="toggle-state" id="contrast-state">
+       Desativado
+      </span>
+</button>
+<button class="logout-btn" data-action="logout" type="button">
+      ↪ Encerrar sessão
+     </button>
+</div>
+</aside>
+<div class="workspace">
+<header class="topbar">
+<span class="breadcrumb">
+      Sabor &amp; Clic
+      <span aria-hidden="true">
+       /
+      </span>
+<strong>
+       Gerenciamento de usuários
+      </strong>
+</span>
+<div class="topbar-right">
+<span class="topbar-date">
+       GESTÃO INTEGRADA
+      </span>
+<span class="status-dot" title="Dados locais de demonstração">
+</span>
+</div>
+</header>
+<main class="main-content" id="main">
+<div class="page-head">
+<div>
+<p class="eyebrow">
+        PAINEL ADMINISTRATIVO
+       </p>
+<h1>
+        Gerenciamento de usuários
+       </h1>
+<p class="page-subtitle">
+        Cadastre os perfis autorizados e controle o acesso ao sistema.
+       </p>
+</div>
+</div>
+<div id="page-content">
+<div class="grid-2 grid-2-admin">
+<section class="surface">
+<p class="eyebrow">
+         CONTAS E PERMISSÕES
+        </p>
+<h2>
+         Novo usuário
+        </h2>
+<form class="form-stack" id="user-form">
+<label>
+          Nome completo
+          <input autocomplete="name" id="new-user-name" maxlength="100" minlength="3" required=""/>
+</label>
+<label>
+          E-mail
+          <input autocomplete="off" id="new-user-email" required="" type="email"/>
+</label>
+<div class="form-grid">
+<label>
+           Perfil
+           <select id="new-user-role" required="">
+<option value="cliente">
+             Cliente
+            </option>
+<option value="cozinheiro">
+             Cozinheiro
+            </option>
+<option value="administrador">
+             Administrador
+            </option>
+</select>
+</label>
+<label>
+           Senha inicial
+           <input id="new-user-password" minlength="8" placeholder="8+ caracteres, Aa1!" required="" type="password"/>
+</label>
+</div>
+<label>
+          Endereço (cliente)
+          <input id="new-user-address" placeholder="Opcional"/>
+</label>
+<div class="form-grid">
+<label>
+           Turno (cozinheiro)
+           <input id="new-user-shift" placeholder="Ex.: Noite"/>
+</label>
+<label>
+           Especialidade
+           <input id="new-user-specialty" placeholder="Ex.: Massas"/>
+</label>
+</div>
+<button class="btn btn-primary" type="submit">
+          Cadastrar usuário
+         </button>
+</form>
+</section>
+<section class="surface info-panel">
+<p class="eyebrow">
+         CONTROLE DE ACESSO
+        </p>
+<h2>
+         Três perfis, três experiências
+        </h2>
+<p>
+         Clientes fazem pedidos e reservas. Cozinheiros acompanham a fila de preparo. Administradores cuidam do catálogo, do estoque, das pessoas, das bancadas e dos relatórios.
+        </p>
+<p class="form-hint">
+         As autorizações são verificadas novamente na API — não apenas nos botões da interface.
+        </p>
+</section>
+</div>
+<section class="surface section">
+<div class="surface-heading">
+<div>
+<p class="eyebrow">
+          EQUIPE E CLIENTES
+         </p>
+<h2>
+          Contas cadastradas
+         </h2>
+</div>
+<span class="count-pill" id="users-total">
+         0 usuários
+        </span>
+</div>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>
+            Usuário
+           </th>
+<th>
+            E-mail
+           </th>
+<th>
+            Perfil
+           </th>
+<th>
+            Situação
+           </th>
+<th>
+            Ação
+           </th>
+</tr>
+</thead>
+<tbody id="admin-users">
+<div class="empty-state" role="status">
+           Carregando informações...
+          </div>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+<footer class="site-footer">
+     Sabor &amp; Clic
+     <span>
+      •
+     </span>
+     Projeto Integrador · IFSP
+     <span>
+      •
+     </span>
+     Ambiente acadêmico
+    </footer>
+</div>
+</div>
+<div aria-live="polite" class="toast" hidden="" id="toast" role="status">
+</div>
+</body>
+</html>

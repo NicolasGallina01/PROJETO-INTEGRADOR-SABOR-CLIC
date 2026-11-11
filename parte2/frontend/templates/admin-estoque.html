@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="light dark" name="color-scheme"/>
+<meta content="Sabor &amp; Clic — gestão de cozinhas, pedidos e cardápio digital" name="description"/>
+<title>
+   Controle de estoque · Sabor &amp; Clic
+  </title>
+<link href="style.css" rel="stylesheet"/>
+<script defer="" src="theme.js">
+</script>
+<script src="app.js" type="module">
+</script>
+</head>
+<body data-page="admin-estoque" data-role="administrador">
+<a class="skip-link" href="#main">
+   Ir para conteúdo
+  </a>
+<div class="app-layout">
+<aside aria-label="Menu principal" class="sidebar">
+<a class="brand" href="admin-cardapio.html">
+
+<span>
+      Sabor
+      <em>
+       &amp;
+      </em>
+      Clic
+      <small>
+       ESPAÇOS &amp; SABORES
+      </small>
+</span>
+</a>
+<div class="sidebar-section">
+     NAVEGAÇÃO
+    </div>
+<nav aria-label="Navegação administrador" class="sidebar-nav">
+<a class="nav-link" href="admin-cardapio.html">
+<span aria-hidden="true" class="nav-symbol">
+       ◈
+      </span>
+<span>
+       Cardápio
+      </span>
+</a>
+<a class="nav-link" href="admin-pedidos.html">
+<span aria-hidden="true" class="nav-symbol">
+       ☷
+      </span>
+<span>
+       Pedidos
+      </span>
+</a>
+<a aria-current="page" class="nav-link active" href="admin-estoque.html">
+<span aria-hidden="true" class="nav-symbol">
+       ▤
+      </span>
+<span>
+       Estoque
+      </span>
+</a>
+<a class="nav-link" href="admin-cozinhas.html">
+<span aria-hidden="true" class="nav-symbol">
+       ▦
+      </span>
+<span>
+       Cozinhas e bancadas
+      </span>
+</a>
+<a class="nav-link" href="admin-usuarios.html">
+<span aria-hidden="true" class="nav-symbol">
+       ♙
+      </span>
+<span>
+       Usuários
+      </span>
+</a>
+<a class="nav-link" href="admin-relatorios.html">
+<span aria-hidden="true" class="nav-symbol">
+       ▥
+      </span>
+<span>
+       Relatórios
+      </span>
+</a>
+</nav>
+<div class="sidebar-bottom">
+<div class="user-identity">
+<span class="avatar" id="user-avatar">
+       SC
+      </span>
+<span>
+<strong id="user-name">
+        Carregando...
+       </strong>
+<small id="user-role">
+        Administrador
+       </small>
+</span>
+</div>
+<button aria-pressed="false" class="contrast-toggle" data-action="contrast" type="button">
+<span aria-hidden="true">
+       ◐
+      </span>
+      Alto contraste
+      <span class="toggle-state" id="contrast-state">
+       Desativado
+      </span>
+</button>
+<button class="logout-btn" data-action="logout" type="button">
+      ↪ Encerrar sessão
+     </button>
+</div>
+</aside>
+<div class="workspace">
+<header class="topbar">
+<span class="breadcrumb">
+      Sabor &amp; Clic
+      <span aria-hidden="true">
+       /
+      </span>
+<strong>
+       Controle de estoque
+      </strong>
+</span>
+<div class="topbar-right">
+<span class="topbar-date">
+       GESTÃO INTEGRADA
+      </span>
+<span class="status-dot" title="Dados locais de demonstração">
+</span>
+</div>
+</header>
+<main class="main-content" id="main">
+<div class="page-head">
+<div>
+<p class="eyebrow">
+        PAINEL ADMINISTRATIVO
+       </p>
+<h1>
+        Controle de estoque
+       </h1>
+<p class="page-subtitle">
+        Gerencie os ingredientes e acompanhe os alertas de reposição.
+       </p>
+</div>
+</div>
+<div id="page-content">
+<div class="metrics-grid" id="stock-metrics">
+</div>
+<div class="grid-2 grid-2-admin">
+<section class="surface">
+<p class="eyebrow">
+         CADASTRO
+        </p>
+<h2>
+         Novo ingrediente
+        </h2>
+<form class="form-stack" id="ingredient-form">
+<label>
+          Nome
+          <input id="ingredient-name" maxlength="100" minlength="2" placeholder="Ex.: Farinha de trigo" required=""/>
+</label>
+<div class="form-grid">
+<label>
+           Categoria
+           <input id="ingredient-category" minlength="2" placeholder="Ex.: Mercearia" required=""/>
+</label>
+<label>
+           Unidade de medida
+           <input id="ingredient-unit" placeholder="un, g, ml, kg..." required=""/>
+</label>
+</div>
+<div class="form-grid">
+<label>
+           Quantidade inicial
+           <input id="ingredient-amount" min="0" required="" step="0.0001" type="number" value="0"/>
+</label>
+<label>
+           Estoque mínimo
+           <input id="ingredient-min" min="0" required="" step="0.0001" type="number" value="0"/>
+</label>
+</div>
+<button class="btn btn-primary" type="submit">
+          Cadastrar ingrediente
+         </button>
+</form>
+</section>
+<section class="surface info-panel">
+<p class="eyebrow">
+         AUTOMAÇÃO
+        </p>
+<h2>
+         Baixa por ficha técnica
+        </h2>
+<p>
+         Cada pedido confirmado desconta automaticamente do estoque as quantidades definidas na ficha técnica dos pratos. Caso faltem ingredientes, o pedido é recusado, sem baixar parcialmente o estoque.
+        </p>
+<div aria-hidden="true" class="info-panel-illustration">
+         ▤
+         <span>
+          ↔
+         </span>
+         ✓
+        </div>
+</section>
+</div>
+<section class="surface section">
+<div class="surface-heading">
+<div>
+<p class="eyebrow">
+          INVENTÁRIO
+         </p>
+<h2>
+          Ingredientes cadastrados
+         </h2>
+</div>
+<span class="count-pill" id="ingredients-total">
+         0 ingredientes
+        </span>
+</div>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>
+            Ingrediente
+           </th>
+<th>
+            Categoria
+           </th>
+<th>
+            Disponível
+           </th>
+<th>
+            Mínimo
+           </th>
+<th>
+            Condição
+           </th>
+<th>
+            Ações
+           </th>
+</tr>
+</thead>
+<tbody id="admin-ingredients">
+<div class="empty-state" role="status">
+           Carregando informações...
+          </div>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+<footer class="site-footer">
+     Sabor &amp; Clic
+     <span>
+      •
+     </span>
+     Projeto Integrador · IFSP
+     <span>
+      •
+     </span>
+     Ambiente acadêmico
+    </footer>
+</div>
+</div>
+<div aria-live="polite" class="toast" hidden="" id="toast" role="status">
+</div>
+</body>
+</html>

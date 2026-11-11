@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="light dark" name="color-scheme"/>
+<meta content="Sabor &amp; Clic — gestão de cozinhas, pedidos e cardápio digital" name="description"/>
+<title>
+   Reservar bancada · Sabor &amp; Clic
+  </title>
+<link href="style.css" rel="stylesheet"/>
+<script defer="" src="theme.js">
+</script>
+<script src="app.js" type="module">
+</script>
+</head>
+<body data-page="agendamentos" data-role="cliente">
+<a class="skip-link" href="#main">
+   Ir para conteúdo
+  </a>
+<div class="app-layout">
+<aside aria-label="Menu principal" class="sidebar">
+<a class="brand" href="index.html">
+
+<span>
+      Sabor
+      <em>
+       &amp;
+      </em>
+      Clic
+      <small>
+       ESPAÇOS &amp; SABORES
+      </small>
+</span>
+</a>
+<div class="sidebar-section">
+     NAVEGAÇÃO
+    </div>
+<nav aria-label="Navegação cliente" class="sidebar-nav">
+<a class="nav-link" href="index.html">
+<span aria-hidden="true" class="nav-symbol">
+       ◈
+      </span>
+<span>
+       Cardápio
+      </span>
+</a>
+<a class="nav-link" href="carrinho.html">
+<span aria-hidden="true" class="nav-symbol">
+       ▣
+      </span>
+<span>
+       Carrinho
+      </span>
+<span class="nav-count" id="cart-count">
+       0
+      </span>
+</a>
+<a class="nav-link" href="rastreamento.html">
+<span aria-hidden="true" class="nav-symbol">
+       ◷
+      </span>
+<span>
+       Meus pedidos
+      </span>
+</a>
+<a aria-current="page" class="nav-link active" href="agendamentos.html">
+<span aria-hidden="true" class="nav-symbol">
+       ▦
+      </span>
+<span>
+       Reservar bancada
+      </span>
+</a>
+</nav>
+<div class="sidebar-bottom">
+<div class="user-identity">
+<span class="avatar" id="user-avatar">
+       SC
+      </span>
+<span>
+<strong id="user-name">
+        Carregando...
+       </strong>
+<small id="user-role">
+        Cliente
+       </small>
+</span>
+</div>
+<button aria-pressed="false" class="contrast-toggle" data-action="contrast" type="button">
+<span aria-hidden="true">
+       ◐
+      </span>
+      Alto contraste
+      <span class="toggle-state" id="contrast-state">
+       Desativado
+      </span>
+</button>
+<button class="logout-btn" data-action="logout" type="button">
+      ↪ Encerrar sessão
+     </button>
+</div>
+</aside>
+<div class="workspace">
+<header class="topbar">
+<span class="breadcrumb">
+      Sabor &amp; Clic
+      <span aria-hidden="true">
+       /
+      </span>
+<strong>
+       Reservar bancada
+      </strong>
+</span>
+<div class="topbar-right">
+<span class="topbar-date">
+       GESTÃO INTEGRADA
+      </span>
+<span class="status-dot" title="Dados locais de demonstração">
+</span>
+</div>
+</header>
+<main class="main-content" id="main">
+<div class="page-head">
+<div>
+<p class="eyebrow">
+        ÁREA DO CLIENTE
+       </p>
+<h1>
+        Reservar bancada
+       </h1>
+<p class="page-subtitle">
+        Reserve um espaço gastronômico e evite conflitos de horários.
+       </p>
+</div>
+</div>
+<div id="page-content">
+<div class="grid-2">
+<section class="surface">
+<p class="eyebrow">
+         NOVA RESERVA
+        </p>
+<h2>
+         Escolha o espaço
+        </h2>
+<form class="form-stack" id="booking-form">
+<label>
+          Bancada
+          <select id="booking-bench" name="bancada_id" required="">
+<option value="">
+            Selecione uma bancada
+           </option>
+</select>
+</label>
+<div class="form-grid">
+<label>
+           Início
+           <input id="booking-start" name="inicio" required="" type="datetime-local"/>
+</label>
+<label>
+           Fim
+           <input id="booking-end" name="fim" required="" type="datetime-local"/>
+</label>
+</div>
+<label>
+          Observações (opcional)
+          <textarea id="booking-note" maxlength="300" name="observacao" placeholder="O que você pretende preparar?" rows="3"></textarea>
+</label>
+<p class="form-hint">
+          Duração permitida: entre 30 minutos e 12 horas.
+         </p>
+<button class="btn btn-primary" type="submit">
+          Solicitar reserva →
+         </button>
+</form>
+</section>
+<section class="surface">
+<p class="eyebrow">
+         SEUS HORÁRIOS
+        </p>
+<h2>
+         Reservas realizadas
+        </h2>
+<div id="booking-list">
+<div class="empty-state" role="status">
+          Carregando informações...
+         </div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<footer class="site-footer">
+     Sabor &amp; Clic
+     <span>
+      •
+     </span>
+     Projeto Integrador · IFSP
+     <span>
+      •
+     </span>
+     Ambiente acadêmico
+    </footer>
+</div>
+</div>
+<div aria-live="polite" class="toast" hidden="" id="toast" role="status">
+</div>
+</body>
+</html>
