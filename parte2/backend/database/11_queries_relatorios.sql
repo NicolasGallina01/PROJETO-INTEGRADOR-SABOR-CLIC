@@ -1,40 +1,29 @@
--- 11_queries_relatorios.sql
--- Consultas SQL para os relatórios exigidos.
+USE sabor_clic;
 
--- 1. Relatório de Vendas (Total faturado e quantidade de pedidos por status)
-SELECT 
-    status, 
-    COUNT(id) AS total_pedidos, 
-    SUM(total) AS receita_total
-FROM pedidos
-GROUP BY status;
+SELECT status, COUNT(*) AS total_pedidos, SUM(valor_total) AS valor_total
+FROM Pedido GROUP BY status;
 
--- 2. Relatório de Estoque (Alerta de ingredientes com baixo estoque - ex: < 5)
-SELECT 
-    nome, 
-    quantidade_estoque, 
-    unidade_medida
-FROM ingredientes
-WHERE quantidade_estoque <= 5.0
-ORDER BY quantidade_estoque ASC;
+-- Receita efetivamente paga.
+SELECT DATE(data_pagamento) AS dia, SUM(valor_pagamento) AS receita
+FROM Venda WHERE status_pagamento = 'pago'
+GROUP BY DATE(data_pagamento);
 
--- 3. Ocupação de Bancadas (Quantidade de agendamentos confirmados por cozinha)
-SELECT 
-    c.nome AS cozinha, 
-    c.capacidade_bancadas,
-    COUNT(a.id) AS total_agendamentos_confirmados
-FROM cozinhas c
-LEFT JOIN agendamentos a ON c.id = a.cozinha_id AND a.status = 'confirmado'
-GROUP BY c.id, c.nome, c.capacidade_bancadas;
+SELECT nome, estoque_atual, estoque_minimo, unidade_medida
+FROM Ingrediente WHERE estoque_atual <= estoque_minimo ORDER BY estoque_atual;
 
--- 4. Restrição de Conflitos: Consulta que o Back-end usará para checar se a bancada está livre
--- O Flask deverá substituir o '?' pelos valores da tentativa de agendamento
-/*
-SELECT COUNT(*) as conflitos FROM agendamentos
-WHERE cozinha_id = ?
-AND status = 'confirmado'
-AND (
-    (? BETWEEN data_hora_inicio AND data_hora_fim) 
-    OR (? BETWEEN data_hora_inicio AND data_hora_fim)
-);
-*/
+SELECT b.id_bancada, b.nome, COUNT(a.id_agendamento) AS reservas_confirmadas
+FROM Bancada b
+LEFT JOIN Agendamento_Bancada ab ON ab.id_bancada = b.id_bancada
+LEFT JOIN Agendamento a ON a.id_agendamento = ab.id_agendamento AND a.status = 'confirmado'
+GROUP BY b.id_bancada, b.nome;
+
+-- Para reservar: iniciar transacao e bloquear a Bancada com SELECT ... FOR UPDATE,
+-- depois consultar conflitos e inserir a reserva antes do COMMIT.
+-- Todos os caminhos de reserva devem seguir esse protocolo.
+-- Consulta parametrizada pelo mysql.connector:
+-- SELECT COUNT(*) FROM Agendamento_Bancada ab
+-- JOIN Agendamento a ON a.id_agendamento = ab.id_agendamento
+-- WHERE ab.id_bancada = %s AND a.status = 'confirmado'
+-- AND ab.data_hora_inicio < %s AND ab.data_hora_fim > %s;
+-- Parametros: bancada, fim pretendido, inicio pretendido.
+
