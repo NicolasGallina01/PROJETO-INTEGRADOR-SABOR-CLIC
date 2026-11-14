@@ -78,7 +78,7 @@ async function bootstrap(){
   }catch(e){
     toast(e.message,true);
     if(page==='login') initializeLogin();
-    else document.querySelectorAll('.empty-state[role="status"]').forEach(node=>{node.textContent='Não foi possível carregar os dados. Verifique a conexão com o servidor e recarregue a página.';});
+    else document.querySelectorAll('.empty-state[role="status"]').forEach(node=>{node.textContent='Não foi possível carregar os dados. Verifique se o armazenamento do navegador está habilitado e recarregue a página.';});
   }
 }
 function initializeLogin(){
@@ -144,14 +144,14 @@ function renderKitchen(){if(!$('#kds-orders'))return;
   const pending=state.pedidos.filter(p=>p.status==='aguardando');const cooking=state.pedidos.filter(p=>p.status==='em_preparo');const ready=state.pedidos.filter(p=>p.status==='pronto');
   $('#kds-metrics').innerHTML=metric('Aguardando',pending.length,'Na fila')+metric('Em preparo',cooking.length,'Na cozinha')+metric('Prontos',ready.length,'Para entrega');
   const shown=state.kdsFilter==='ativos'?state.pedidos.filter(p=>['aguardando','em_preparo'].includes(p.status)):state.pedidos;
-  $('#kds-orders').innerHTML=shown.length?shown.map(p=>`<article class="kds-ticket"><div class="ticket-head"><div><p class="eyebrow">PEDIDO Nº ${p.id}</p><h3>${esc(p.cliente)}</h3></div>${badge(p.status)}</div><div class="ticket-items">${(p.itens??[]).map(i=>`<p><strong>${i.quantidade}×</strong> ${esc(i.nome)}</p>`).join('')}</div><p class="ticket-date">${friendlyDate(p.criado_em)}</p><div class="ticket-actions"><span class="muted">Estimativa:</span><input type="number" min="1" max="240" value="${p.tempo_estimado}" id="time-${p.id}" aria-label="Tempo em minutos para pedido ${p.id}" ${['pronto','entregue','cancelado'].includes(p.status)?'disabled':''}><button class="btn btn-soft btn-sm" data-action="set-time" data-id="${p.id}" ${['pronto','entregue','cancelado'].includes(p.status)?'disabled':''}>Salvar</button></div><div class="ticket-actions">${p.status==='aguardando'?`<button class="btn btn-primary" data-action="status" data-id="${p.id}" data-status="em_preparo">Iniciar preparo →</button>`:p.status==='em_preparo'?`<button class="btn btn-primary" data-action="status" data-id="${p.id}" data-status="pronto">Marcar como pronto ✓</button>`:''}</div></article>`).join(''):empty('Nenhum pedido nessa visualização','Novos pedidos aparecerão automaticamente.');
+  $('#kds-orders').innerHTML=shown.length?shown.map(p=>`<article class="kds-ticket"><div class="ticket-head"><div><p class="eyebrow">PEDIDO Nº ${p.id}</p><h3>${esc(p.cliente)}</h3></div>${badge(p.status)}</div><div class="ticket-items">${(p.itens??[]).map(i=>`<p><strong>${i.quantidade}×</strong> ${esc(i.nome)}</p>`).join('')}</div><p class="ticket-date">${friendlyDate(p.criado_em)}</p><div class="ticket-actions"><span class="muted">Estimativa:</span><input type="number" min="1" max="240" value="${p.tempo_estimado}" id="time-${p.id}" aria-label="Tempo em minutos para pedido ${p.id}" ${['pronto','entregue'].includes(p.status)?'disabled':''}><button class="btn btn-soft btn-sm" data-action="set-time" data-id="${p.id}" ${['pronto','entregue'].includes(p.status)?'disabled':''}>Salvar</button></div><div class="ticket-actions">${p.status==='aguardando'?`<button class="btn btn-primary" data-action="status" data-id="${p.id}" data-status="em_preparo">Iniciar preparo →</button>`:p.status==='em_preparo'?`<button class="btn btn-primary" data-action="status" data-id="${p.id}" data-status="pronto">Marcar como pronto ✓</button>`:''}</div></article>`).join(''):empty('Nenhum pedido nessa visualização','Novos pedidos aparecerão automaticamente.');
 }
 
 // RESERVAS
 const whenISO = value => new Date(value).toISOString();
 function bookingHtml(p,canCancel=true){return `<article class="booking-card"><div class="order-top"><strong>#${p.id} · ${esc(p.bancada_nome)}</strong>${badge(p.status,p.status==='confirmado'?'Confirmado':'Cancelado')}</div><h3>${friendlyDate(p.inicio)} até ${friendlyDate(p.fim)}</h3><p>${esc(p.cliente_nome)} ${p.observacao?'· '+esc(p.observacao):''}</p>${p.status==='confirmado'&&canCancel?`<button type="button" class="link-inline" data-action="cancel-booking" data-id="${p.id}">Cancelar reserva</button>`:''}</article>`;}
 async function initClientBookings(){[state.bancadas,state.agendamentos]=await Promise.all([api.bancadas(),api.agendamentos()]);
-  $('#booking-bench').innerHTML='<option value="">Selecione uma bancada</option>'+state.bancadas.map(b=>`<option value="${b.id}">${esc(b.nome)} · ${esc(b.tipo)} (${b.capacidade} pessoas) · ${money(b.valor_hora)}/hora</option>`).join('');
+  $('#booking-bench').innerHTML='<option value="">Selecione uma bancada</option>'+state.bancadas.map(b=>`<option value="${b.id}">${esc(b.nome)} · ${esc(b.tipo)} (${b.capacidade} pessoas)</option>`).join('');
   onForm('#booking-form',async()=>{
     const start=field('#booking-start'),end=field('#booking-end');if(!start||!end)throw Error('Escolha o início e o fim da reserva.');
     const data={bancada_id:Number(field('#booking-bench')),inicio:whenISO(start),fim:whenISO(end),observacao:field('#booking-note')};
@@ -179,7 +179,7 @@ async function openRecipe(id){const prato=state.pratos.find(p=>p.id===id);if(!pr
 function renderRecipe(){const el=$('#recipe-editor');if(!el||!state.recipeDish)return;
   const dish=state.pratos.find(p=>p.id===state.recipeDish);
   const selectOptions=(selected)=>'<option value="">Ingrediente...</option>'+state.ingredientes.map(i=>`<option value="${i.id}" ${Number(selected)===i.id?'selected':''}>${esc(i.nome)} (${esc(i.unidade)})</option>`).join('');
-  el.innerHTML=`<div class="surface-heading"><strong>${esc(dish?.nome??'Prato')}</strong><span class="count-pill">${state.recipeRows.length} ingrediente(s)</span></div><p class="form-hint">Informe a quantidade consumida para preparar uma unidade do prato.</p><div id="recipe-rows">${state.recipeRows.map((r,index)=>`<div class="recipe-row"><select aria-label="Ingrediente ${index+1}" data-recipe-index="${index}" data-recipe-key="ingrediente_id">${selectOptions(r.ingrediente_id)}</select><input aria-label="Quantidade do ingrediente ${index+1}" type="number" min="0.001" step="0.001" value="${r.quantidade}" data-recipe-index="${index}" data-recipe-key="quantidade"><button type="button" aria-label="Remover ingrediente ${index+1}" data-action="remove-recipe" data-index="${index}">×</button></div>`).join('')}</div><div class="button-row"><button type="button" class="btn btn-soft" data-action="add-recipe">+ Ingrediente</button><button type="button" class="btn btn-primary" data-action="save-recipe">Salvar ficha</button></div>`;
+  el.innerHTML=`<div class="surface-heading"><strong>${esc(dish?.nome??'Prato')}</strong><span class="count-pill">${state.recipeRows.length} ingrediente(s)</span></div><p class="form-hint">Informe a quantidade consumida para preparar uma unidade do prato.</p><div id="recipe-rows">${state.recipeRows.map((r,index)=>`<div class="recipe-row"><select aria-label="Ingrediente ${index+1}" data-recipe-index="${index}" data-recipe-key="ingrediente_id">${selectOptions(r.ingrediente_id)}</select><input aria-label="Quantidade do ingrediente ${index+1}" type="number" min="0.0001" step="0.0001" value="${r.quantidade}" data-recipe-index="${index}" data-recipe-key="quantidade"><button type="button" aria-label="Remover ingrediente ${index+1}" data-action="remove-recipe" data-index="${index}">×</button></div>`).join('')}</div><div class="button-row"><button type="button" class="btn btn-soft" data-action="add-recipe">+ Ingrediente</button><button type="button" class="btn btn-primary" data-action="save-recipe">Salvar ficha</button></div>`;
   el.querySelectorAll('[data-recipe-index]').forEach(input=>input.addEventListener('input',()=>{const idx=Number(input.dataset.recipeIndex);state.recipeRows[idx][input.dataset.recipeKey]=input.dataset.recipeKey==='quantidade'?Number(input.value):Number(input.value);}));
 }
 
@@ -202,7 +202,7 @@ function renderUsers(){const list=state.usuarios;$('#users-total').textContent=`
 
 // ADMIN — BANCADAS E RESERVAS
 async function initBenches(){[state.bancadas,state.agendamentos]=await Promise.all([api.bancadas(),api.agendamentos()]);renderBenches();
-  onForm('#bench-form',async()=>{await api.createBancada({nome:field('#bench-name'),tipo:field('#bench-type'),capacidade:Number(field('#bench-capacity')),valor_hora:Number(field('#bench-rate'))});$('#bench-form').reset();state.bancadas=await api.bancadas();renderBenches();toast('Bancada cadastrada.');});
+  onForm('#bench-form',async()=>{await api.createBancada({nome:field('#bench-name'),tipo:field('#bench-type'),capacidade:Number(field('#bench-capacity'))});$('#bench-form').reset();state.bancadas=await api.bancadas();renderBenches();toast('Bancada cadastrada.');});
 }
 function renderBenches(){const el=$('#admin-benches');if(!el)return;
   $('#benches-total').textContent=`${state.bancadas.length} bancadas`;
@@ -212,8 +212,6 @@ function renderBenches(){const el=$('#admin-benches');if(!el)return;
 
 // ADMIN — RELATÓRIOS
 async function initReports(){const r=await api.relatorios();$('#report-metrics').innerHTML=metric('Receita do mês',money(r.receita_mes),'Pedidos não cancelados')+metric('Pedidos no mês',r.pedidos_mes,'Total do período')+metric('Reservas do mês',r.reservas_mes,'Agendamentos confirmados')+metric('Alertas no estoque',r.estoque_baixo.length,'Ingredientes abaixo do mínimo');
-  await renderPayments();
-  $('#refresh-payments').onclick=()=>operate(renderPayments);
   const top=r.mais_vendidos??[];const topMax=Math.max(1,...top.map(i=>i.quantidade));
   $('#report-top-products').innerHTML=top.length?top.map(i=>bar(i.nome,i.quantidade,topMax)).join(''):empty('Ainda não há vendas.');
   const status=r.por_status??[];const statMax=Math.max(1,...status.map(i=>i.quantidade));
@@ -222,11 +220,6 @@ async function initReports(){const r=await api.relatorios();$('#report-metrics')
 }
 function bar(label,value,max){return `<div class="bar-row"><div class="bar-label"><strong>${esc(label)}</strong><span>${value}</span></div><progress class="bar-progress" value="${Math.max(0,value)}" max="${Math.max(1,max)}" aria-label="${esc(label)}: ${value}"></progress></div>`;}
 
-async function renderPayments(){
-  const rows=await api.pagamentos();
-  $('#payments-list').innerHTML=rows.length?rows.map(p=>`<article class="booking-card"><strong>Pagamento #${p.id_venda} · ${money(p.valor_pagamento)}</strong><p>${p.id_agendamento?'Reserva #'+p.id_agendamento:'Pedido'} · ${esc(p.status_pagamento)}</p>${p.status_pagamento==='pendente'?`<select id="payment-method-${p.id_venda}" aria-label="Forma de pagamento"><option value="PIX">PIX</option><option value="DINHEIRO">Dinheiro</option><option value="DEBITO">Débito</option><option value="CREDITO">Crédito</option></select><button class="btn btn-primary" data-action="confirm-payment" data-id="${p.id_venda}">Confirmar recebimento</button>`:''}</article>`).join(''):empty('Nenhum pagamento registrado.');
-}
-
 // EVENTOS GERAIS (sem atributos onclick)
 document.addEventListener('click',async e=>{
   const button=e.target.closest('button[data-action]');if(!button)return;
@@ -234,7 +227,6 @@ document.addEventListener('click',async e=>{
   if(action==='contrast')return; // theme.js administra o contraste
   if(action==='logout'){await operate(async()=>{await api.logout();location.replace('login.html');});return;}
   if(!user)return;
-  if(action==='confirm-payment'){if(!confirm('Confirmar que o valor foi recebido?'))return;await operate(async()=>{await api.confirmarPagamento(id,$(`#payment-method-${id}`).value);await renderPayments();},'Recebimento registrado.');return;}
   if(action==='add-cart'){
     if(user.cargo!=='cliente'){toast('Somente clientes podem adicionar itens ao carrinho.',true);return;}
     const dish=state.pratos.find(p=>p.id===id);if(!dish)return;

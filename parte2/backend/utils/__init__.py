@@ -1,1 +1,0 @@
-"""Erros e utilitarios compartilhados."""
